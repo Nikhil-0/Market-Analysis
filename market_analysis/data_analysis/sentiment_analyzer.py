@@ -1,7 +1,3 @@
-"""
-Sentiment analysis module for analyzing financial news sentiment.
-"""
-
 import os
 import pandas as pd
 import numpy as np
@@ -10,15 +6,6 @@ import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 def clean_text(text):
-    """
-    Clean and prepare text for sentiment analysis
-    
-    Args:
-        text (str): Raw text to clean
-        
-    Returns:
-        str: Cleaned text
-    """
     if not isinstance(text, str):
         return ''
     
@@ -28,16 +15,6 @@ def clean_text(text):
     return text
 
 def analyze_sentiment(df, text_column='headline'):
-    """
-    Analyze sentiment of text data using VADER
-    
-    Args:
-        df (pd.DataFrame): DataFrame containing text data
-        text_column (str): Column name containing text to analyze
-        
-    Returns:
-        pd.DataFrame: DataFrame with sentiment scores added
-    """
     print(f'Analyzing sentiment for {len(df)} items...')
     
     # Create a copy to avoid modifying the original
@@ -101,15 +78,6 @@ def analyze_sentiment(df, text_column='headline'):
     return result_df
 
 def fix_dates(df):
-    """
-    Fix special date formats like 'Today' and convert to proper dates
-    
-    Args:
-        df (pd.DataFrame): DataFrame with date column
-        
-    Returns:
-        pd.DataFrame: DataFrame with fixed dates
-    """
     if 'date' not in df.columns:
         print('Error: date column not found')
         return df
@@ -144,16 +112,6 @@ def fix_dates(df):
     return df
 
 def create_daily_sentiment(ticker, sentiment_df=None):
-    """
-    Create daily aggregated sentiment data
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        sentiment_df (pd.DataFrame, optional): DataFrame with sentiment scores
-        
-    Returns:
-        pd.DataFrame: Daily aggregated sentiment data
-    """
     print(f'Creating daily sentiment aggregates for {ticker}...')
     
     # If sentiment_df is not provided, try to load from file
@@ -224,15 +182,6 @@ def create_daily_sentiment(ticker, sentiment_df=None):
     return daily_sentiment
 
 def process_news_data(ticker):
-    """
-    Process news data: load, analyze sentiment, and create daily aggregates
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        
-    Returns:
-        tuple: (sentiment_df, daily_sentiment_df)
-    """
     print(f'Processing news data for {ticker}...')
     
     # Check for news file
