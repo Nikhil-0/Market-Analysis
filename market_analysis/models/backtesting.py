@@ -18,17 +18,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 from config import settings
 
 def calculate_returns(prices, positions, initial_capital=10000):
-    """
-    Calculates returns for a given set of positions
-    
-    Args:
-        prices (Series): Series of price data
-        positions (Series): Series of position signals (1 for long, 0 for flat, -1 for short)
-        initial_capital (float): Initial capital amount
-        
-    Returns:
-        DataFrame: DataFrame with strategy returns and performance metrics
-    """
     # Make a copy of the data
     returns = pd.DataFrame(index=prices.index)
     returns['price'] = prices
@@ -93,19 +82,6 @@ def calculate_returns(prices, positions, initial_capital=10000):
     return returns, metrics
 
 def backtest_model(model, X, y, prices, initial_capital=10000):
-    """
-    Backtests a prediction model on historical data
-    
-    Args:
-        model: Trained prediction model
-        X (DataFrame): Feature data
-        y (Series): Actual outcomes
-        prices (Series): Series of price data aligned with X and y
-        initial_capital (float): Initial capital amount
-        
-    Returns:
-        tuple: (DataFrame with backtest results, dict with performance metrics)
-    """
     try:
         # Make predictions
         predictions = model.predict(X)
@@ -153,17 +129,6 @@ def backtest_model(model, X, y, prices, initial_capital=10000):
         return None, None
 
 def plot_backtest_results(returns, metrics, title="Model Backtest Results"):
-    """
-    Creates a plot of backtest results
-    
-    Args:
-        returns (DataFrame): DataFrame with backtest results
-        metrics (dict): Dictionary with performance metrics
-        title (str): Plot title
-        
-    Returns:
-        matplotlib.figure.Figure: Figure object with the plot
-    """
     try:
         # Create figure with subplots
         fig, axes = plt.subplots(3, 1, figsize=(14, 14), gridspec_kw={'height_ratios': [3, 1, 1]})
@@ -221,17 +186,6 @@ def plot_backtest_results(returns, metrics, title="Model Backtest Results"):
         return None
 
 def backtest_sentiment_strategy(stock_file, sentiment_file, threshold=0.05):
-    """
-    Backtests a simple sentiment-based trading strategy
-    
-    Args:
-        stock_file (str): Path to stock data CSV
-        sentiment_file (str): Path to sentiment data CSV
-        threshold (float): Sentiment threshold for taking positions
-        
-    Returns:
-        tuple: (DataFrame with backtest results, dict with performance metrics)
-    """
     try:
         # Load stock data
         stock_data = pd.read_csv(stock_file)
