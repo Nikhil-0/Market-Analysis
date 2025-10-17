@@ -1,7 +1,3 @@
-"""
-News scraper module for collecting financial news data from various sources.
-"""
-
 import os
 import pandas as pd
 import requests
@@ -11,15 +7,6 @@ import random
 from datetime import datetime
 
 def scrape_finviz_news(ticker):
-    """
-    Scrape news articles from Finviz for a given ticker symbol with improved robustness
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        
-    Returns:
-        pd.DataFrame: DataFrame containing date, time, headline for the news articles
-    """
     print(f'Scraping Finviz news for {ticker}...')
     
     url = f'https://finviz.com/quote.ashx?t={ticker}'
