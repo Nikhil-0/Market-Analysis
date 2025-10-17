@@ -153,7 +153,7 @@ For a complete list, see `requirements.txt`.
 ## 📬 Contact
 
 Nikhil Madeti
-Project Link: [https://github.com/yourusername/market-analysis-project](https://github.com/yourusername/market-analysis-project)
+Project Link: [https://github.com/Nikhil-0/Market-Analysis](https://github.com/Nikhil-0/Market-Analysis)
 
 ## 🙏 Acknowledgments
 
