@@ -31,15 +31,6 @@ except ImportError:
     SPACY_AVAILABLE = False
 
 def extract_entities(text):
-    """
-    Extract named entities from text using spaCy.
-    
-    Args:
-        text (str): Text to extract entities from
-        
-    Returns:
-        dict: Dictionary with entity text as keys and entity labels as values
-    """
     if not SPACY_AVAILABLE:
         logger.warning("spaCy not available. Entity extraction skipped.")
         return {}
@@ -69,16 +60,6 @@ def extract_entities(text):
         return {}
 
 def extract_entities_from_file(input_file, text_column='headline'):
-    """
-    Extract named entities from a file with text data.
-    
-    Args:
-        input_file (str): Path to the input CSV file
-        text_column (str): Name of the column containing the text to analyze
-        
-    Returns:
-        tuple: (DataFrame with entity data, Path to saved entity CSV file)
-    """
     try:
         if not SPACY_AVAILABLE:
             logger.warning("spaCy not available. Install with: pip install spacy")
@@ -154,19 +135,6 @@ def extract_entities_from_file(input_file, text_column='headline'):
         return None, None
 
 def extract_topics(texts, num_topics=5):
-    """
-    Extract main topics from a collection of texts.
-    
-    This is a simplified version that just returns the most common words.
-    For more sophisticated topic modeling, consider using gensim's LDA.
-    
-    Args:
-        texts (list): List of text strings
-        num_topics (int): Number of topics to extract
-        
-    Returns:
-        list: List of tuples (word, count) representing the main topics
-    """
     # Convert to list if it's a series
     if hasattr(texts, 'tolist'):
         texts = texts.tolist()
@@ -195,17 +163,6 @@ def extract_topics(texts, num_topics=5):
     return word_counts.most_common(num_topics)
 
 def extract_topics_from_file(input_file, text_column='headline', num_topics=10):
-    """
-    Extract main topics from a file with text data.
-    
-    Args:
-        input_file (str): Path to the input CSV file
-        text_column (str): Name of the column containing the text to analyze
-        num_topics (int): Number of topics to extract
-        
-    Returns:
-        list: List of tuples (word, count) representing the main topics
-    """
     try:
         logger.info(f"Loading data from {input_file}...")
         data = pd.read_csv(input_file)
