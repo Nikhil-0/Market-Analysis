@@ -525,7 +525,7 @@ class MarketAnalysisDashboard:
                     [
                         html.P(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}"),
                         html.P([
-                            html.A("GitHub", href="https://github.com/Nikhil-0/market-analysis", target="_blank"),
+                            html.A("GitHub", href="https://github.com/Nikhil-0/Market-Analysis", target="_blank"),
                         ]),
                     ],
                     className="footer",
