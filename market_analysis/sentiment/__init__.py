@@ -1,0 +1,2 @@
+from .vader_sentiment import analyze_sentiment, process_sentiment_data
+from .advanced_sentiment import extract_entities, extract_topics

@@ -1,0 +1,352 @@
+/* Dashboard styles */
+:root {
+  --primary-color: #1e88e5;
+  --secondary-color: #26a69a;
+  --accent-color: #ff9800;
+  --dark-color: #263238;
+  --light-color: #eceff1;
+  --text-color: #37474f;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --danger-color: #f44336;
+  --chart-bg: #ffffff;
+  --header-bg: linear-gradient(135deg, var(--primary-color), #1565c0);
+  --body-bg: #f5f7fa;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+/* Base styles */
+body {
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--body-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Dashboard container */
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Header */
+.header {
+  background: var(--header-bg);
+  color: white;
+  padding: 2rem;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.dashboard-description {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Ticker selector */
+.ticker-selector {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.ticker-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ticker-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.ticker-control {
+  flex-grow: 1;
+}
+
+.ticker-selector .dropdown {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.ticker-label {
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.ticker-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--light-color);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.ticker-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dark-color);
+  margin-top: 0.3rem;
+}
+
+/* Date range selector */
+.date-range-selector {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.date-icon {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.date-label {
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.date-picker-container {
+  width: 100%;
+}
+
+/* Tabs */
+.tabs-container {
+  margin-bottom: 2rem;
+}
+
+.tab {
+  background-color: white !important;
+  color: var(--text-color) !important;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 1rem 1.5rem !important;
+  font-weight: 500 !important;
+  transition: var(--transition);
+}
+
+.tab--selected {
+  background-color: var(--light-color) !important;
+  color: var(--primary-color) !important;
+  border-bottom: 3px solid var(--primary-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Chart containers */
+.chart-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: var(--card-shadow);
+}
+
+.chart-container h3 {
+  color: var(--dark-color);
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Slider */
+.slider-container {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.rc-slider-track {
+  background-color: var(--primary-color);
+}
+
+.rc-slider-handle {
+  border-color: var(--primary-color);
+}
+
+/* Data table */
+.table-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: var(--card-shadow);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.data-table th {
+  background: linear-gradient(to bottom, var(--primary-color), #1976d2);
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.data-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.02);
+}
+
+.data-table tr:hover {
+  background-color: rgba(25, 118, 210, 0.05);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+th {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Loading */
+._dash-loading {
+  margin: 3rem auto;
+  color: var(--primary-color);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  background-color: var(--dark-color);
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+/* Sentiment colors */
+.sentiment-positive {
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.sentiment-negative {
+  color: var(--danger-color);
+  font-weight: bold;
+}
+
+.sentiment-neutral {
+  color: var(--text-color);
+}
+
+/* Alias to match className used in layout for avg sentiment placeholder */
+.neutral-sentiment {
+  color: var(--text-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 1.5rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.8rem;
+  }
+  
+  .dashboard-description {
+    font-size: 1rem;
+  }
+  
+  .chart-container, 
+  .table-container,
+  .ticker-selector {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-container h3 {
+    font-size: 1.2rem;
+  }
+}

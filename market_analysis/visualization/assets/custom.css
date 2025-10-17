@@ -1,0 +1,96 @@
+/* Stub file to satisfy Dash assets cache and prevent 500s when custom.css was referenced previously./* Custom styles for Market Analysis Dashboard */
+
+   Keep this file even if empty to avoid FileNotFoundError during index render.
+
+   Actual styles live in dashboard.css. *//* Sentiment styling */
+
+.sentiment-positive {
+    color: green !important;
+    font-weight: 600 !important;
+}
+
+.sentiment-negative {
+    color: red !important;
+    font-weight: 600 !important;
+}
+
+.sentiment-neutral {
+    color: gray !important;
+}
+
+/* Count value styling */
+.count-value {
+    font-weight: 500 !important;
+}
+
+/* Info display styling */
+.info-value {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+}
+
+/* General table styling enhancements */
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    text-align: left !important;
+    font-weight: bold !important;
+    background-color: #f2f2f2 !important;
+    padding: 8px !important;
+    border-bottom: 2px solid #ddd !important;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+    text-align: left !important;
+    padding: 6px !important;
+}
+
+#date-range-display, #headline-count-display, #avg-sentiment-display {
+    margin: 5px 0 !important;
+    padding: 5px !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    display: inline-block !important;
+    min-width: 80px !important;
+}
+
+/* Sentiment display colors */
+.sentiment-positive, .positive-sentiment {
+    color: green !important;
+    font-weight: 600 !important;
+}
+
+.sentiment-negative, .negative-sentiment {
+    color: red !important;
+    font-weight: 600 !important;
+}
+
+.sentiment-neutral, .neutral-sentiment {
+    color: gray !important;
+}
+
+.sentiment-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 15px 0 !important;
+}
+
+.sentiment-table th {
+    background-color: #f2f2f2 !important;
+    padding: 10px !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    border-bottom: 2px solid #ddd !important;
+}
+
+.sentiment-table td {
+    padding: 8px !important;
+    text-align: left !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+.sentiment-table tr:hover {
+    background-color: #f9f9f9 !important;
+}
+
+.sentiment-table td span {
+    display: inline !important;
+}

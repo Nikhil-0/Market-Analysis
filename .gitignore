@@ -1,0 +1,39 @@
+# Ignore specific directories and files
+/data/
+/notebooks/
+.ipynb_checkpoints/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment files
+.env
+.venv
+env/
+venv/
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore Copilot files
+.vs/**/copilot-chat/
+.vs/**/CopilotIndices/
+.vs/**/FileContentIndex/
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+market_analysis.log
