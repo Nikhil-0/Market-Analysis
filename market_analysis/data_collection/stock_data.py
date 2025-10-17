@@ -19,9 +19,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 from config import settings
 
 def retry_decorator(max_retries=3, delay=1):
-    """
-    Decorator for retrying functions with exponential backoff
-    """
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -43,18 +40,6 @@ def retry_decorator(max_retries=3, delay=1):
     return decorator
 
 def get_stock_data(ticker, start_date, end_date, include_dividends=True):
-    """
-    Fetches historical stock data for a given ticker from Yahoo Finance.
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        start_date (str): Start date in YYYY-MM-DD format
-        end_date (str): End date in YYYY-MM-DD format
-        include_dividends (bool): Whether to include dividend data
-        
-    Returns:
-        str: Path to the saved CSV file or None if the operation fails
-    """
     try:
         logger.info(f"Fetching stock data for {ticker} from {start_date} to {end_date}")
         stock_data = yf.download(ticker, start=start_date, end=end_date, actions=include_dividends)
@@ -85,18 +70,6 @@ def get_stock_data(ticker, start_date, end_date, include_dividends=True):
 
 @retry_decorator(max_retries=settings.MAX_RETRIES, delay=settings.RETRY_DELAY)
 def get_stock_data_with_retry(ticker, start_date=None, end_date=None, lookback_days=None):
-    """
-    Fetches stock data with automatic retries on failure
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        start_date (str, optional): Start date in YYYY-MM-DD format
-        end_date (str, optional): End date in YYYY-MM-DD format
-        lookback_days (int, optional): Number of days to look back from end_date
-        
-    Returns:
-        str: Path to the saved CSV file or None if all retries fail
-    """
     # Set default end date to today if not provided
     if end_date is None:
         end_date = datetime.now().strftime('%Y-%m-%d')
@@ -111,15 +84,6 @@ def get_stock_data_with_retry(ticker, start_date=None, end_date=None, lookback_d
     return get_stock_data(ticker, start_date, end_date)
 
 def add_technical_indicators(stock_data_path):
-    """
-    Adds technical indicators to stock data
-    
-    Args:
-        stock_data_path (str): Path to the CSV file with stock data
-        
-    Returns:
-        str: Path to the updated CSV file with technical indicators
-    """
     if not os.path.exists(stock_data_path):
         logger.error(f"Stock data file {stock_data_path} not found")
         return None

@@ -1,39 +1,11 @@
-"""
-Package initialization for data_collection module
-"""
-
 from .stock_data import get_stock_data, get_stock_data_with_retry
 from .news_data import get_finviz_news, get_finviz_news_with_retry, get_multiple_news_sources
 
 # Export wrapper functions for backward compatibility
 def collect_stock_data(ticker, start_date, end_date, output_file=None):
-    """
-    Wrapper function to collect stock data using Yahoo Finance
-    
-    Args:
-        ticker (str): The ticker symbol
-        start_date (str or date): Start date for data collection
-        end_date (str or date): End date for data collection
-        output_file (str, optional): Path to save the collected data
-        
-    Returns:
-        pandas.DataFrame: The collected stock data
-    """
     return get_stock_data_with_retry(ticker, start_date, end_date, output_file)
 
 def collect_news_data(ticker, start_date=None, end_date=None, output_file=None):
-    """
-    Wrapper function to collect news data from Finviz
-    
-    Args:
-        ticker (str): The ticker symbol
-        start_date (str or date, optional): Start date for data collection
-        end_date (str or date, optional): End date for data collection
-        output_file (str, optional): Path to save the collected data
-        
-    Returns:
-        pandas.DataFrame: The collected news data
-    """
     import pandas as pd
     import numpy as np
     import logging

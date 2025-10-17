@@ -5,7 +5,6 @@ import logging
 import pickle
 from datetime import datetime, timedelta
 
-# For sklearn models
 from sklearn.model_selection import train_test_split, TimeSeriesSplit, GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
@@ -33,18 +32,6 @@ except ImportError:
     XGBOOST_AVAILABLE = False
 
 def prepare_data(stock_file, sentiment_file=None, target_shift=1, test_size=0.2):
-    """
-    Prepares data for training prediction models.
-    
-    Args:
-        stock_file (str): Path to the CSV file with stock data
-        sentiment_file (str, optional): Path to the CSV file with sentiment data
-        target_shift (int): Number of days to shift for prediction target
-        test_size (float): Proportion of data to use for testing
-        
-    Returns:
-        tuple: X_train, X_test, y_train, y_test, feature_names
-    """
     try:
         logger.info(f"Loading stock data from {stock_file}")
         stock_data = pd.read_csv(stock_file)
@@ -129,17 +116,6 @@ def prepare_data(stock_file, sentiment_file=None, target_shift=1, test_size=0.2)
         return None, None, None, None, None
 
 def train_logistic_regression(X_train, y_train, hyperparams=None):
-    """
-    Trains a logistic regression model
-    
-    Args:
-        X_train (DataFrame): Training features
-        y_train (Series): Training target variable
-        hyperparams (dict, optional): Hyperparameters for the model
-        
-    Returns:
-        object: Trained logistic regression model
-    """
     logger.info("Training Logistic Regression model")
     
     # Default hyperparameters
@@ -157,17 +133,6 @@ def train_logistic_regression(X_train, y_train, hyperparams=None):
     return model
 
 def train_random_forest(X_train, y_train, hyperparams=None):
-    """
-    Trains a random forest model
-    
-    Args:
-        X_train (DataFrame): Training features
-        y_train (Series): Training target variable
-        hyperparams (dict, optional): Hyperparameters for the model
-        
-    Returns:
-        object: Trained random forest model
-    """
     logger.info("Training Random Forest model")
     
     # Default hyperparameters from settings or use these
@@ -187,17 +152,6 @@ def train_random_forest(X_train, y_train, hyperparams=None):
     return model
 
 def train_xgboost(X_train, y_train, hyperparams=None):
-    """
-    Trains an XGBoost model
-    
-    Args:
-        X_train (DataFrame): Training features
-        y_train (Series): Training target variable
-        hyperparams (dict, optional): Hyperparameters for the model
-        
-    Returns:
-        object: Trained XGBoost model
-    """
     if not XGBOOST_AVAILABLE:
         logger.error("XGBoost not installed. Install with: pip install xgboost")
         return None
@@ -221,18 +175,6 @@ def train_xgboost(X_train, y_train, hyperparams=None):
     return model
 
 def evaluate_model(model, X_test, y_test, model_name="Model"):
-    """
-    Evaluates a trained model and returns evaluation metrics
-    
-    Args:
-        model: Trained model
-        X_test (DataFrame): Test features
-        y_test (Series): Test target variable
-        model_name (str): Name of the model for logging
-        
-    Returns:
-        dict: Dictionary with evaluation metrics
-    """
     logger.info(f"Evaluating {model_name}")
     
     # Make predictions
@@ -265,17 +207,6 @@ def evaluate_model(model, X_test, y_test, model_name="Model"):
     return metrics
 
 def save_model(model, file_path, metadata=None):
-    """
-    Saves a trained model to disk
-    
-    Args:
-        model: Model to save
-        file_path (str): Path where to save the model
-        metadata (dict, optional): Metadata about the model
-        
-    Returns:
-        bool: True if successful, False otherwise
-    """
     try:
         # Create models directory if it doesn't exist
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -299,15 +230,6 @@ def save_model(model, file_path, metadata=None):
         return False
 
 def load_model(file_path):
-    """
-    Loads a trained model from disk
-    
-    Args:
-        file_path (str): Path to the saved model
-        
-    Returns:
-        tuple: (model, metadata) or (None, None) if loading fails
-    """
     try:
         with open(file_path, 'rb') as f:
             model_package = pickle.load(f)
@@ -324,16 +246,6 @@ def load_model(file_path):
         return None, None
 
 def compare_models(stock_file, sentiment_file=None):
-    """
-    Compares multiple model types on the same dataset
-    
-    Args:
-        stock_file (str): Path to the CSV file with stock data
-        sentiment_file (str, optional): Path to the CSV file with sentiment data
-        
-    Returns:
-        dict: Dictionary with model evaluation results
-    """
     # Prepare data
     X_train, X_test, y_train, y_test, features = prepare_data(
         stock_file, sentiment_file, 

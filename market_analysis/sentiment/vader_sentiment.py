@@ -1,7 +1,3 @@
-"""
-Sentiment analysis module using VADER for Market Analysis project
-"""
-
 import pandas as pd
 import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -23,15 +19,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 from config import settings
 
 def clean_text(text):
-    """
-    Cleans text data by removing URLs, special characters, and extra whitespace.
-    
-    Args:
-        text (str): Text to clean
-        
-    Returns:
-        str: Cleaned text
-    """
     if pd.isna(text):
         return ""
     
@@ -50,16 +37,6 @@ def clean_text(text):
     return text
 
 def analyze_sentiment(text):
-    """
-    Analyzes the sentiment of a given text using VADER.
-    Returns a dictionary with all sentiment scores.
-    
-    Args:
-        text (str): Text to analyze
-        
-    Returns:
-        dict: Dictionary with sentiment scores
-    """
     if not text or pd.isna(text):
         return {'compound': 0.0, 'pos': 0.0, 'neu': 1.0, 'neg': 0.0}
     
@@ -68,15 +45,6 @@ def analyze_sentiment(text):
     return sentiment
 
 def get_sentiment_category(compound_score):
-    """
-    Categorizes sentiment based on compound score.
-    
-    Args:
-        compound_score (float): VADER compound sentiment score
-        
-    Returns:
-        str: Sentiment category ('Positive', 'Negative', or 'Neutral')
-    """
     if compound_score >= 0.05:
         return 'Positive'
     elif compound_score <= -0.05:
@@ -85,11 +53,6 @@ def get_sentiment_category(compound_score):
         return 'Neutral'
 
 def enhance_vader_lexicon_for_finance():
-    """
-    Enhances VADER's built-in lexicon with finance-specific terms.
-    
-    This improves sentiment accuracy for financial news.
-    """
     analyzer = SentimentIntensityAnalyzer()
     
     # Financial specific lexicon enhancements
@@ -147,18 +110,6 @@ def enhance_vader_lexicon_for_finance():
     return analyzer
 
 def process_sentiment_data(input_file_path, output_file_path=None, text_column='headline', use_finance_lexicon=True):
-    """
-    Reads text data from a file, analyzes sentiment, and saves the results.
-    
-    Args:
-        input_file_path (str): Path to the input CSV file
-        output_file_path (str, optional): Path to save the output CSV file
-        text_column (str): Name of the column containing the text to analyze
-        use_finance_lexicon (bool): Whether to use the enhanced financial lexicon
-        
-    Returns:
-        str: Path to the saved CSV file or None if the operation fails
-    """
     try:
         logger.info(f"Loading data from {input_file_path}...")
         data = pd.read_csv(input_file_path)
@@ -242,15 +193,6 @@ def process_sentiment_data(input_file_path, output_file_path=None, text_column='
         return None
 
 def aggregate_sentiment_by_date(sentiment_file):
-    """
-    Aggregates sentiment scores by date.
-    
-    Args:
-        sentiment_file (str): Path to the CSV file with sentiment data
-        
-    Returns:
-        pandas.DataFrame: DataFrame with aggregated sentiment data by date
-    """
     try:
         logger.info(f"Aggregating sentiment data from {sentiment_file} by date...")
         sentiment_data = pd.read_csv(sentiment_file)
@@ -307,15 +249,15 @@ if __name__ == '__main__':
         )
         
         if result:
-            print(f"\n✅ Sentiment analysis completed successfully!")
-            print(f"📊 Results saved to: {result}")
+            print(f"\n Sentiment analysis completed successfully!")
+            print(f" Results saved to: {result}")
             
             # Aggregate by date
             daily_sentiment = aggregate_sentiment_by_date(result)
             if daily_sentiment is not None:
                 daily_file = os.path.join(PROJ_ROOT, 'data', f'{ticker}_daily_sentiment.csv')
                 daily_sentiment.to_csv(daily_file, index=False)
-                print(f"📅 Daily aggregated sentiment saved to: {daily_file}")
+                print(f" Daily aggregated sentiment saved to: {daily_file}")
     else:
-        print(f"❌ News data file not found: {input_file}")
-        print(f"💡 Run data_collection.py first to collect news data.")
+        print(f" News data file not found: {input_file}")
+        print(f" Run data_collection.py first to collect news data.")

@@ -21,9 +21,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 from config import settings
 
 def retry_decorator(max_retries=3, delay=1):
-    """
-    Decorator for retrying functions with exponential backoff
-    """
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -45,9 +42,6 @@ def retry_decorator(max_retries=3, delay=1):
     return decorator
 
 def parse_finviz_date(date_text):
-    """
-    Parse dates from Finviz that might include relative dates like 'Today'
-    """
     today = date.today()
     
     if 'Today' in date_text:
@@ -70,16 +64,6 @@ def parse_finviz_date(date_text):
             return None
 
 def get_finviz_news(ticker, max_articles=None):
-    """
-    Scrapes financial news headlines from Finviz for a given ticker.
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        max_articles (int, optional): Maximum number of articles to retrieve
-        
-    Returns:
-        str: Path to the saved CSV file or None if the operation fails
-    """
     if max_articles is None:
         max_articles = settings.MAX_NEWS_ARTICLES
         
@@ -148,29 +132,9 @@ def get_finviz_news(ticker, max_articles=None):
 
 @retry_decorator(max_retries=settings.MAX_RETRIES, delay=settings.RETRY_DELAY)
 def get_finviz_news_with_retry(ticker, max_articles=None):
-    """
-    Scrapes financial news with automatic retries on failure
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        max_articles (int, optional): Maximum number of articles to retrieve
-        
-    Returns:
-        str: Path to the saved CSV file or None if all retries fail
-    """
     return get_finviz_news(ticker, max_articles)
 
 def get_marketwatch_news(ticker, max_articles=None):
-    """
-    Scrapes financial news headlines from MarketWatch for a given ticker.
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        max_articles (int, optional): Maximum number of articles to retrieve
-        
-    Returns:
-        pandas.DataFrame: DataFrame with news data or None if the operation fails
-    """
     if max_articles is None:
         max_articles = settings.MAX_NEWS_ARTICLES
         
@@ -233,17 +197,6 @@ def get_marketwatch_news(ticker, max_articles=None):
         return None
 
 def get_multiple_news_sources(ticker, sources=None, max_articles=None):
-    """
-    Collects news from multiple sources and combines them
-    
-    Args:
-        ticker (str): Stock ticker symbol
-        sources (list, optional): List of news sources to use
-        max_articles (int, optional): Maximum number of articles per source
-        
-    Returns:
-        str: Path to the saved CSV file with combined news
-    """
     if sources is None:
         sources = ['finviz', 'marketwatch']
     
