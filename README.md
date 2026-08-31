@@ -1,8 +1,8 @@
-# Market Analysis Project 📊
+# Market Analysis Project
 
 A comprehensive Python-based market analysis tool that leverages machine learning and natural language processing to analyze market trends, predict stock movements, and extract insights from financial news. This project combines advanced AI techniques with traditional market analysis to provide a holistic view of market dynamics and relationships.
 
-## 🌟 Features
+## Features
 
 - **AI-Powered Stock Analysis**
   - Machine learning models for price prediction (XGBoost, Random Forest)
@@ -31,7 +31,7 @@ A comprehensive Python-based market analysis tool that leverages machine learnin
   - Real-time sentiment scoring
   - Interactive entity network visualization
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -117,7 +117,7 @@ market_analysis/
 └── utils/              # Utility functions
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the test suite:
 ```bash
@@ -142,7 +142,7 @@ Core dependencies:
 
 For a complete list, see `requirements.txt`.
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -150,12 +150,12 @@ For a complete list, see `requirements.txt`.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📬 Contact
+## Contact
 
 Nikhil Madeti
 Project Link: [https://github.com/Nikhil-0/Market-Analysis](https://github.com/Nikhil-0/Market-Analysis)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [VADER Sentiment](https://github.com/cjhutto/vaderSentiment) for sentiment analysis
 - [Plotly](https://plotly.com/) for interactive visualizations
