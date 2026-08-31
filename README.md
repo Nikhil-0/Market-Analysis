@@ -82,7 +82,7 @@ The project supports multiple data collection modes:
    - News feeds: Real-time with configurable polling interval
    - Sentiment analysis: Immediate processing of new data
 
-## 📊 Usage
+## Usage
 
 ### Basic Analysis
 
@@ -105,7 +105,7 @@ For exploratory analysis, use the provided notebook:
 jupyter notebook notebooks/market_analysis.ipynb
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 market_analysis/
@@ -129,7 +129,7 @@ Key test modules:
 - `test_entity_network.py` - Tests for entity network generation
 - `test_imports.py` - Package import validation
 
-## 📋 Dependencies
+## Dependencies
 
 Core dependencies:
 - pandas (≥1.3.0) - Data manipulation
